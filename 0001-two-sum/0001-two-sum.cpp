@@ -5,9 +5,10 @@ public:
         const size_t num = nums.size();
         for(int i = 0; i < num; ++i)
         {
+            int curNum = nums[i];
             for(int j = i + 1; j < num; ++j)
             {
-                if (nums[i] + nums[j] == target)
+                if (curNum + nums[j] == target)
                 {
                     result[0] = i;
                     result[1] = j;
