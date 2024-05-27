@@ -2,14 +2,19 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         const size_t num = nums.size();
-        for(int i = 0; i < num -1; ++i)
+        
+        unordered_map<int, int> umap;
+        umap.reserve(num);
+        for(int i = 0; i < num; ++i)
         {
-            for(int j = i + 1; j < num; ++j)
+            umap.emplace(nums[i], i);
+        }
+        for(int i = 0; i < num; ++i)
+        {
+            auto iter = umap.find(target - nums[i]);
+            if (iter != umap.end() && i != iter->second)
             {
-                if (nums[i] + nums[j] == target)
-                {
-                    return { i, j };
-                }
+                return { i, iter->second };
             }
         }
 
