@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> result(2);
         const size_t num = nums.size();
         for(int i = 0; i < num; ++i)
         {
@@ -10,13 +9,11 @@ public:
             {
                 if (curNum + nums[j] == target)
                 {
-                    result[0] = i;
-                    result[1] = j;
-                    return result;
+                    return { i, j}};
                 }
             }
         }
 
-        return result;
+        return {};
     }
 };
