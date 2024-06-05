@@ -17,21 +17,8 @@ public:
 
         int sum = 0;
         bool bValidl1 = l1 != nullptr, bValidl2 = l2 != nullptr;
-        while(bValidl1 || bValidl2)
+        while((bValidl1 && bValidl2) || sum == 1)
         {
-            if (sum == 0)
-            {
-                if (bValidl1 && !bValidl2)
-                {
-                    result->next = l1;
-                    break;
-                }
-                else if (!bValidl1 && bValidl2)
-                {
-                    result->next = l2;
-                    break;
-                }
-            }
             ListNode* NewNode = new ListNode();
 
             sum = sum + ((bValidl1) ? l1->val : 0) + ((bValidl2) ? l2->val : 0);
@@ -53,9 +40,14 @@ public:
             bValidl1 = l1 != nullptr; 
             bValidl2 = l2 != nullptr;
         }
-        if (sum != 0)
+        
+        if (bValidl1 && !bValidl2)
         {
-            result->next = new ListNode(1);
+            result->next = l1;
+        }
+        else if (!bValidl1 && bValidl2)
+        {
+            result->next = l2;
         }
 
         return head;
