@@ -25,7 +25,7 @@ public:
             if (l2 != nullptr) { l2 = l2->next; }
             sum = sum + r1 + r2;
             NewNode->val = (sum > 9) ? sum - 10 : sum;
-            sum /= 10;
+            sum = (sum > 9);
             if (result == nullptr)
             {
                 result = NewNode;
