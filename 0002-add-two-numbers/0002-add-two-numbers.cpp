@@ -15,7 +15,7 @@ public:
         ListNode* result = nullptr;
         ListNode* head = nullptr;
 
-        int sum = 0;
+        unsigned int sum = 0;
         while(l1 != nullptr || l2 != nullptr || sum != 0)
         {
             ListNode* NewNode = new ListNode();
@@ -24,8 +24,8 @@ public:
             if (l1 != nullptr) { l1 = l1->next; }
             if (l2 != nullptr) { l2 = l2->next; }
             sum = sum + r1 + r2;
-            NewNode->val = sum % 10;
-            sum /= 10;
+            NewNode->val = (sum > 9) ? sum - 10 : sum;
+            sum = (sum > 9);
             if (result == nullptr)
             {
                 result = NewNode;
