@@ -16,13 +16,14 @@ public:
         ListNode* head = nullptr;
 
         int sum = 0;
-        while(l1 != nullptr || l2 != nullptr)
+        bool bValidl1 = l1 != nullptr, bValidl2 = l2 != nullptr;
+        while(bValidl1 || bValidl2)
         {
             ListNode* NewNode = new ListNode();
-            const int r1 = (l1 == nullptr) ? 0 : l1->val;
-            const int r2 = (l2 == nullptr) ? 0 : l2->val;
-            if (l1 != nullptr) { l1 = l1->next; }
-            if (l2 != nullptr) { l2 = l2->next; }
+            const int r1 = (bValidl1) ? l1->val : 0;
+            const int r2 = (bValidl2) ? l2->val : 0;
+            if (bValidl1) { l1 = l1->next; }
+            if (bValidl2) { l2 = l2->next; }
             sum = sum + r1 + r2;
             NewNode->val = (sum > 9) ? sum - 10 : sum;
             sum /= 10;
@@ -36,6 +37,8 @@ public:
                 result->next = NewNode;
                 result = NewNode;
             }
+            bValidl1 = l1 != nullptr; 
+            bValidl2 = l2 != nullptr;
         }
         if (sum != 0)
         {
