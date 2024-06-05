@@ -16,7 +16,7 @@ public:
         ListNode* head = nullptr;
 
         int sum = 0;
-        while(l1 != nullptr || l2 != nullptr || sum != 0)
+        while(l1 != nullptr || l2 != nullptr)
         {
             ListNode* NewNode = new ListNode();
             const int r1 = (l1 == nullptr) ? 0 : l1->val;
@@ -36,6 +36,10 @@ public:
                 result->next = NewNode;
                 result = NewNode;
             }
+        }
+        if (sum != 0)
+        {
+            result->next = new ListNode(1);
         }
 
         return head;
