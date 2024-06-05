@@ -20,11 +20,10 @@ public:
         while(bValidl1 || bValidl2)
         {
             ListNode* NewNode = new ListNode();
-            const int r1 = (bValidl1) ? l1->val : 0;
-            const int r2 = (bValidl2) ? l2->val : 0;
+            sum = sum + ((bValidl1) ? l1->val : 0) + ((bValidl2) ? l2->val : 0);
             if (bValidl1) { l1 = l1->next; }
             if (bValidl2) { l2 = l2->next; }
-            sum = sum + r1 + r2;
+            
             NewNode->val = (sum > 9) ? sum - 10 : sum;
             sum /= 10;
             if (result == nullptr)
