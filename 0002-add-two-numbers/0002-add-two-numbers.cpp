@@ -19,7 +19,21 @@ public:
         bool bValidl1 = l1 != nullptr, bValidl2 = l2 != nullptr;
         while(bValidl1 || bValidl2)
         {
+            if (sum == 0)
+            {
+                if (bValidl1 && !bValidl2)
+                {
+                    result->next = l1;
+                    break;
+                }
+                else if (!bValidl1 && bValidl2)
+                {
+                    result->next = l2;
+                    break;
+                }
+            }
             ListNode* NewNode = new ListNode();
+
             sum = sum + ((bValidl1) ? l1->val : 0) + ((bValidl2) ? l2->val : 0);
             if (bValidl1) { l1 = l1->next; }
             if (bValidl2) { l2 = l2->next; }
